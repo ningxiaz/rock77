@@ -1,4 +1,5 @@
 $tile-size: 54px;
+$show-size: 500px;
 $grandiant-1: #111;
 $grandiant-2: #333;
 
@@ -21,6 +22,24 @@ body{
     linear-gradient($grandiant-1, $grandiant-2);
 }
 
+.caption {
+  text-align: center;
+  position: absolute;
+  bottom: 6%;
+  left: 46%;
+  opacity: 0.7;
+
+  h3, h5 {
+    color: white;
+    line-height: 1.3;
+  }
+
+  h5 {
+    font-size: 1rem;
+    font-style: italic;
+  }
+}
+
 .container {
   width: 800px;
   // height: 800px;
@@ -28,7 +47,6 @@ body{
   position: absolute;
   left: 15%;
   top: 15%;
-  
 }
 
 .rect {
@@ -39,6 +57,7 @@ body{
   height: $tile-size;
   position: absolute;
   -webkit-perspective: 1000;
+  cursor: pointer;
 
   .flipper {
     -webkit-transition: 0.6s;
@@ -70,5 +89,92 @@ body{
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
 }
+
+@-webkit-keyframes zoom-fadein {
+  from {
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+  }
+
+  to {
+    width: $show-size;
+    height: $show-size;
+    opacity: 1;
+    top: 15%;
+    left: 14%;
+  }
+}
+
+@-webkit-keyframes slide {
+  from {
+    left: 14%;
+    opacity: 0.8;
+  }
+
+  to {
+    left: calc(14% + #{$show-size});
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.3;
+  }
+}
+
+.show {
+  .show-front {
+    width: $show-size;
+    height: $show-size;
+    
+    position: absolute;
+    z-index: 10;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-name: zoom-fadein;
+    -webkit-animation-fill-mode: forwards;
+  }
+
+  .show-back {
+    width: $show-size;
+    height: $show-size;
+    top: 15%;
+
+    position: absolute;
+    z-index: 5;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-name: slide;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-delay: .5s;
+  }
+
+  .close {
+    width: 50px;
+    height: 50px;
+    background-color: #999;
+    color: white;
+    font-size: 22px;
+    opacity: 0;
+    position: absolute;
+    top: calc(15% - 50px);
+    left: calc(14% + 1000px - 50px);
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+
+    -webkit-animation-duration: .2s;
+    -webkit-animation-name: fadein;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-delay: 1s;
+  }
+}
+
 
 

@@ -3,6 +3,9 @@ $show-size: 500px;
 $grandiant-1: #111;
 $grandiant-2: #333;
 
+$show-left: calc(50% - #{$show-size});
+$close-left: calc(50% + 500px - 50px);
+
 body{
   background-color: $grandiant-1;
 
@@ -45,14 +48,14 @@ body{
   // height: 800px;
   min-width: 600px;
   position: absolute;
-  left: 15%;
+  left: calc(50% - 500px);
   top: 15%;
 }
 
 .rect {
   // background-image: url(../images/1a.jpg);
   // background-size: 54px auto;
-  background-color: #111;
+  // background-color: #111;
   width: $tile-size;
   height: $tile-size;
   position: absolute;
@@ -104,18 +107,18 @@ body{
     height: $show-size;
     opacity: 1;
     top: 15%;
-    left: 14%;
+    left: $show-left;
   }
 }
 
 @-webkit-keyframes slide {
   from {
-    left: 14%;
-    opacity: 0.8;
+    left: $show-left;
+    opacity: 0.5;
   }
 
   to {
-    left: calc(14% + #{$show-size});
+    left: 50%;
     opacity: 1;
   }
 }
@@ -131,32 +134,45 @@ body{
 }
 
 .show {
-  .show-front {
+  .show-album {
     width: $show-size;
     height: $show-size;
-    
     position: absolute;
     z-index: 10;
+
     -webkit-animation-duration: .5s;
     -webkit-animation-name: zoom-fadein;
     -webkit-animation-fill-mode: forwards;
   }
 
-  .show-back {
+  .show-me {
+    width: $show-size;
+    height: $show-size;
+    position: absolute;
+    z-index: 15;
+    top: 15%;
+    left: $show-left;
+    opacity: 0;
+
+    // -webkit-transition: opacity 1s ease-in-out;
+  }
+
+  .show-text {
     width: $show-size;
     height: $show-size;
     top: 15%;
+    opacity: 0;
+    background-color: white;
 
     position: absolute;
     z-index: 5;
-    -webkit-animation-duration: .5s;
+    -webkit-animation-duration: 1s;
     -webkit-animation-name: slide;
     -webkit-animation-fill-mode: forwards;
-    -webkit-animation-delay: .5s;
+    -webkit-animation-delay: .8s;
   }
 
-  .close {
-    width: 50px;
+  .control {
     height: 50px;
     background-color: #999;
     color: white;
@@ -164,15 +180,77 @@ body{
     opacity: 0;
     position: absolute;
     top: calc(15% - 50px);
-    left: calc(14% + 1000px - 50px);
     text-align: center;
     line-height: 50px;
     cursor: pointer;
 
-    -webkit-animation-duration: .2s;
+    -webkit-animation-duration: .5s;
     -webkit-animation-name: fadein;
     -webkit-animation-fill-mode: forwards;
-    -webkit-animation-delay: 1s;
+    -webkit-animation-delay: 1.5s;
+  }
+  
+  .close {
+    width: 50px;
+    left: $close-left;    
+  }
+
+  .music, .me {
+    font-size: 18px;
+  }
+
+  .music {
+    width: 80px;
+    left: calc(50% - 80px);
+  }
+
+  .me {
+    width: 60px;
+    left: 50%;
+  }
+
+  .album-info {
+    // margin-top: 45%;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+
+    h4.album-title {
+      text-transform: uppercase;
+      font-size: 2em;
+      font-weight: 600;
+    }
+
+    h6.artist {
+      color: #e74c3c;      
+    }
+  }
+
+  .mine {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    padding: 0 40px;
+    padding-top: 150px;
+    opacity: 0;
+    z-index: 5;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+
+    .location {
+      color: #2ecc71;
+      font-weight: 600;
+    }
+
+    p {
+      line-height: 1.4;
+      margin: 20px 0;
+      font-weight: 400;
+      color: #555;
+      font-size: 1.125em;
+    }
   }
 
   .descr {
@@ -191,17 +269,6 @@ body{
 
     .time {
       color: #27ae60;
-    }
-
-    .location {
-      color: #2980b9;
-    }
-
-    p {
-      color: white;
-      line-height: 1.3;
-      margin: 10px 0;
-      font-weight: 300;
     }
   }
 }

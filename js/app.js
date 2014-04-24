@@ -42,11 +42,11 @@ for(i = 0; i < coordinates.length; i ++){
     'width': '54px',
   }).appendTo(front);
 
-  if(i == 0){
-    image = '1b.png';
+  if(i < 10){
+    image = (i + 1) + 'b.jpg';
   }
   else{
-    image = '1b.jpg';
+    image = '8b.jpg';
   }
 
   $('<img/>', {
@@ -73,11 +73,13 @@ $('.rect').click(function(){
     'class': 'show-text',
   }).appendTo(show);
 
-  if(id == '1'){
-    image = '1b.png';
+  int_id = parseInt(id);
+
+  if(int_id < 10){
+    image = int_id + 'b.jpg';
   }
   else{
-    image = '1b.jpg';
+    image = '8b.jpg';
   }
 
   show_me = $('<img/>', {
@@ -114,8 +116,8 @@ $('.rect').click(function(){
     $('.mine').animate({opacity: 1}, 1000);
   });
 
-  if(id == '1'){
-    detail = details[0];
+  if(int_id < 10){
+    detail = details[int_id - 1];
   }
   else{
     detail = details[1];
@@ -145,7 +147,6 @@ $('.rect').click(function(){
     'class': 'text',
   }).text(detail.text).appendTo(mine);
 });
-
 
 
 $(document).foundation();

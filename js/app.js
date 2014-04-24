@@ -8,10 +8,22 @@ for(i = 0; i < coordinates.length; i ++){
     'left': coordinates[i][0] + 'px'
   };
 
+  shadow = $('<div/>', {
+    'class': 'shadow',
+  }).css(style).appendTo('.container');
+
+  // let albums fade in with [3, 5)s delays.
+  style['-webkit-animation-delay'] = (3 + 5*Math.random()) + 's';
+
   rect = $('<div/>', {
     'class': 'rect',
     'id': 'album' + (i+1),
   }).css(style).appendTo('.container');
+  
+  // when albums have shown, remove all the shadows.
+  window.setTimeout(function(){
+    $('.shadow').remove();
+  }, 10000);
 
   flipper = $('<div/>', {
     'class': 'flipper'

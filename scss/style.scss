@@ -52,6 +52,24 @@ body{
   top: 15%;
 }
 
+.shadow {
+  width: $tile-size;
+  height: $tile-size;
+  position: absolute;
+  background-color: #666;
+  z-index: -1;
+}
+
+@-webkit-keyframes full-fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .rect {
   // background-image: url(../images/1a.jpg);
   // background-size: 54px auto;
@@ -61,6 +79,12 @@ body{
   position: absolute;
   -webkit-perspective: 1000;
   cursor: pointer;
+  opacity: 0;
+
+  -webkit-animation-duration: .3s;
+  -webkit-animation-name: full-fadein;
+  -webkit-animation-fill-mode: forwards;
+  // -webkit-animation-delay: 1s;
 
   .flipper {
     -webkit-transition: 0.6s;
@@ -189,7 +213,7 @@ body{
     -webkit-animation-fill-mode: forwards;
     -webkit-animation-delay: 1.5s;
   }
-  
+
   .close {
     width: 50px;
     left: $close-left;    

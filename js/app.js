@@ -79,7 +79,7 @@ for(i = 0; i < coordinates.length; i ++){
 
     dot.mouseenter(function(){
       id = $(this).data('id');
-      $('#album'+id).css('z-index', 10);
+      $('#album'+id).css('z-index', 200);
       $('#album'+id+' .front').addClass('zoom');
       $('#album'+id+' .back').addClass('zoom');
       $('#date'+id).fadeIn(300);
@@ -191,5 +191,48 @@ $('.rect').click(function(){
   }).text(detail.text).appendTo(mine);
 });
 
+$('#character').click(function(){
+  if($('.container').hasClass('character')){
+    return;
+  }
+
+  else if($('.container').hasClass('stack')){
+    $('.container').addClass('character');
+    $('.container').removeClass('stack');
+    to_character();
+  }
+});
+
+$('#stack').click(function(){
+  if($('.container').hasClass('stack')){
+    return;
+  }
+
+  else if($('.container').hasClass('character')){
+    $('.container').addClass('stack');
+    $('.container').removeClass('character');
+    to_stack();
+  }
+});
+
+function to_stack(){
+  for(i = 0; i < coordinates.length; i ++){
+    $('#album'+(i+1)).animate({
+      'top': '200px',
+      'left':  - 20 + (i*13) + 'px',
+      'z-index': (i + 2),
+    }, 1000);
+  }
+}
+
+function to_character(){
+  for(i = 0; i < coordinates.length; i ++){
+    $('#album'+(i+1)).animate({
+      'top': coordinates[i][1] + 'px',
+      'left': coordinates[i][0] + 'px',
+      'z-index': 3,
+    }, 1000);
+  }
+}
 
 $(document).foundation();

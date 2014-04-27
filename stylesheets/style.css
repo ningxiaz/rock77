@@ -30,6 +30,29 @@ body {
 }
 
 /* line 47, ../scss/style.scss */
+.layout {
+  position: absolute;
+  top: 6%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+/* line 54, ../scss/style.scss */
+.layout img {
+  width: 30px;
+}
+
+/* line 59, ../scss/style.scss */
+#character {
+  left: calc(50% - 500px);
+}
+
+/* line 63, ../scss/style.scss */
+#stack {
+  left: calc(50% - 460px);
+}
+
+/* line 67, ../scss/style.scss */
 .container {
   width: 800px;
   min-width: 600px;
@@ -38,7 +61,16 @@ body {
   top: 18%;
 }
 
-/* line 56, ../scss/style.scss */
+/* line 76, ../scss/style.scss */
+.container.stack {
+  -webkit-perspective: 900px;
+}
+/* line 79, ../scss/style.scss */
+.container.stack .rect {
+  -webkit-transform: rotateY(45deg);
+}
+
+/* line 84, ../scss/style.scss */
 .timeline {
   width: 1080px;
   min-height: 20px;
@@ -47,14 +79,14 @@ body {
   left: calc(50% - 540px);
   top: 87%;
 }
-/* line 64, ../scss/style.scss */
+/* line 92, ../scss/style.scss */
 .timeline .line {
   width: 100%;
   height: 1px;
   border-bottom: 1px white solid;
   margin-top: 9px;
 }
-/* line 71, ../scss/style.scss */
+/* line 99, ../scss/style.scss */
 .timeline .dot {
   position: absolute;
   top: 0;
@@ -64,7 +96,7 @@ body {
   background-color: #2ecc71;
   opacity: 0.6;
 }
-/* line 81, ../scss/style.scss */
+/* line 109, ../scss/style.scss */
 .timeline .date {
   position: absolute;
   color: #ccc;
@@ -73,7 +105,7 @@ body {
   display: none;
   text-align: center;
 }
-/* line 90, ../scss/style.scss */
+/* line 118, ../scss/style.scss */
 .timeline .label {
   position: absolute;
   top: 55px;
@@ -81,16 +113,16 @@ body {
   background-color: transparent;
   color: #999;
 }
-/* line 98, ../scss/style.scss */
+/* line 126, ../scss/style.scss */
 .timeline #label1 {
   left: 50px;
 }
-/* line 102, ../scss/style.scss */
+/* line 130, ../scss/style.scss */
 .timeline #label2 {
   right: 50px;
 }
 
-/* line 107, ../scss/style.scss */
+/* line 135, ../scss/style.scss */
 .shadow {
   width: 54px;
   height: 54px;
@@ -100,18 +132,18 @@ body {
 }
 
 @-webkit-keyframes full-fadein {
-  /* line 116, ../scss/style.scss */
+  /* line 144, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
-  /* line 120, ../scss/style.scss */
+  /* line 148, ../scss/style.scss */
   to {
     opacity: 1;
   }
 }
 
-/* line 125, ../scss/style.scss */
+/* line 153, ../scss/style.scss */
 .rect {
   width: 54px;
   height: 54px;
@@ -123,13 +155,13 @@ body {
   -webkit-animation-name: full-fadein;
   -webkit-animation-fill-mode: forwards;
 }
-/* line 141, ../scss/style.scss */
+/* line 169, ../scss/style.scss */
 .rect .flipper {
   -webkit-transition: 0.6s;
   -webkit-transform-style: preserve-3d;
   position: relative;
 }
-/* line 146, ../scss/style.scss */
+/* line 174, ../scss/style.scss */
 .rect .flipper .front, .rect .flipper .back {
   width: 54px;
   height: 54px;
@@ -139,29 +171,29 @@ body {
   left: 0;
   -webkit-transition: all 0.3s ease-in-out;
 }
-/* line 157, ../scss/style.scss */
+/* line 185, ../scss/style.scss */
 .rect .flipper .front {
   z-index: 2;
 }
-/* line 161, ../scss/style.scss */
+/* line 189, ../scss/style.scss */
 .rect .flipper .back {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
 }
-/* line 166, ../scss/style.scss */
+/* line 194, ../scss/style.scss */
 .rect .flipper .front.zoom, .rect .flipper .back.zoom {
   -webkit-transform: scale(1.8);
   box-shadow: 0px 0px 20px #fff;
 }
 
-/* line 174, ../scss/style.scss */
+/* line 202, ../scss/style.scss */
 .rect:hover .flipper, .rect.hover .flipper {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
 }
 
 @-webkit-keyframes zoom-fadein {
-  /* line 180, ../scss/style.scss */
+  /* line 208, ../scss/style.scss */
   from {
     width: 0;
     height: 0;
@@ -170,7 +202,7 @@ body {
     opacity: 0;
   }
 
-  /* line 188, ../scss/style.scss */
+  /* line 216, ../scss/style.scss */
   to {
     width: 500px;
     height: 500px;
@@ -181,13 +213,13 @@ body {
 }
 
 @-webkit-keyframes slide {
-  /* line 198, ../scss/style.scss */
+  /* line 226, ../scss/style.scss */
   from {
     left: calc(50% - 500px);
     opacity: 0.5;
   }
 
-  /* line 203, ../scss/style.scss */
+  /* line 231, ../scss/style.scss */
   to {
     left: 50%;
     opacity: 1;
@@ -195,38 +227,38 @@ body {
 }
 
 @-webkit-keyframes fadein {
-  /* line 210, ../scss/style.scss */
+  /* line 238, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
-  /* line 214, ../scss/style.scss */
+  /* line 242, ../scss/style.scss */
   to {
     opacity: 0.3;
   }
 }
 
-/* line 220, ../scss/style.scss */
+/* line 248, ../scss/style.scss */
 .show .show-album {
   width: 500px;
   height: 500px;
   position: absolute;
-  z-index: 10;
+  z-index: 300;
   -webkit-animation-duration: .5s;
   -webkit-animation-name: zoom-fadein;
   -webkit-animation-fill-mode: forwards;
 }
-/* line 231, ../scss/style.scss */
+/* line 259, ../scss/style.scss */
 .show .show-me {
   width: 500px;
   height: 500px;
   position: absolute;
-  z-index: 15;
+  z-index: 320;
   top: 18%;
   left: calc(50% - 500px);
   opacity: 0;
 }
-/* line 243, ../scss/style.scss */
+/* line 271, ../scss/style.scss */
 .show .show-text {
   width: 500px;
   height: 500px;
@@ -234,13 +266,13 @@ body {
   opacity: 0;
   background-color: white;
   position: absolute;
-  z-index: 5;
+  z-index: 260;
   -webkit-animation-duration: 1s;
   -webkit-animation-name: slide;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-delay: .8s;
 }
-/* line 258, ../scss/style.scss */
+/* line 286, ../scss/style.scss */
 .show .control {
   height: 50px;
   background-color: #999;
@@ -252,49 +284,49 @@ body {
   text-align: center;
   line-height: 50px;
   cursor: pointer;
-  z-index: 10;
+  z-index: 260;
   -webkit-animation-duration: .5s;
   -webkit-animation-name: fadein;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-delay: 1.5s;
 }
-/* line 277, ../scss/style.scss */
+/* line 305, ../scss/style.scss */
 .show .close {
   width: 50px;
   left: calc(50% + 500px - 50px);
 }
-/* line 282, ../scss/style.scss */
+/* line 310, ../scss/style.scss */
 .show .music, .show .me {
   font-size: 18px;
 }
-/* line 286, ../scss/style.scss */
+/* line 314, ../scss/style.scss */
 .show .music {
   width: 80px;
   left: calc(50% - 80px);
 }
-/* line 291, ../scss/style.scss */
+/* line 319, ../scss/style.scss */
 .show .me {
   width: 60px;
   left: 50%;
 }
-/* line 296, ../scss/style.scss */
+/* line 324, ../scss/style.scss */
 .show .album-info {
   text-align: center;
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
 }
-/* line 303, ../scss/style.scss */
+/* line 331, ../scss/style.scss */
 .show .album-info h4.album-title {
   text-transform: uppercase;
   font-size: 2em;
   font-weight: 600;
 }
-/* line 309, ../scss/style.scss */
+/* line 337, ../scss/style.scss */
 .show .album-info h6.artist {
   color: #e74c3c;
 }
-/* line 314, ../scss/style.scss */
+/* line 342, ../scss/style.scss */
 .show .mine {
   position: absolute;
   top: 0;
@@ -307,12 +339,12 @@ body {
   width: 100%;
   height: 100%;
 }
-/* line 326, ../scss/style.scss */
+/* line 354, ../scss/style.scss */
 .show .mine .location {
   color: #2ecc71;
   font-weight: 600;
 }
-/* line 331, ../scss/style.scss */
+/* line 359, ../scss/style.scss */
 .show .mine p {
   line-height: 1.4;
   margin: 20px 0;
@@ -320,7 +352,7 @@ body {
   color: #555;
   font-size: 1.125em;
 }
-/* line 340, ../scss/style.scss */
+/* line 368, ../scss/style.scss */
 .show .descr {
   width: 100%;
   bottom: 0;
@@ -329,13 +361,13 @@ body {
   position: absolute;
   padding: 16px 24px;
 }
-/* line 348, ../scss/style.scss */
+/* line 376, ../scss/style.scss */
 .show .descr span {
   color: white;
   padding-right: 20px;
   font-weight: 600;
 }
-/* line 354, ../scss/style.scss */
+/* line 382, ../scss/style.scss */
 .show .descr .time {
   color: #27ae60;
 }

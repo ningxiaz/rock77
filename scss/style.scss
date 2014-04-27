@@ -44,6 +44,26 @@ body{
   }
 }
 
+.layout {
+  position: absolute;
+  top: 6%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+
+  img {
+    width: 30px;
+  }
+}
+
+#character {
+  left: calc(50% - 500px);
+}
+
+#stack {
+  left: calc(50% - 460px);
+}
+
 .container {
   width: 800px;
   // height: 800px;
@@ -51,6 +71,14 @@ body{
   position: absolute;
   left: calc(50% - 500px);
   top: $main-top;
+}
+
+.container.stack {
+  -webkit-perspective: 900px;
+
+  .rect {
+    -webkit-transform: rotateY( 45deg );
+  }
 }
 
 .timeline {
@@ -221,7 +249,7 @@ body{
     width: $show-size;
     height: $show-size;
     position: absolute;
-    z-index: 10;
+    z-index: 300;
 
     -webkit-animation-duration: .5s;
     -webkit-animation-name: zoom-fadein;
@@ -232,7 +260,7 @@ body{
     width: $show-size;
     height: $show-size;
     position: absolute;
-    z-index: 15;
+    z-index: 320;
     top: $main-top;
     left: $show-left;
     opacity: 0;
@@ -248,7 +276,7 @@ body{
     background-color: white;
 
     position: absolute;
-    z-index: 5;
+    z-index: 260;
     -webkit-animation-duration: 1s;
     -webkit-animation-name: slide;
     -webkit-animation-fill-mode: forwards;
@@ -266,7 +294,7 @@ body{
     text-align: center;
     line-height: 50px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 260;
 
     -webkit-animation-duration: .5s;
     -webkit-animation-name: fadein;

@@ -86,6 +86,22 @@ body{
     display: none;
     text-align: center;
   }
+
+  .label {
+    position: absolute;
+    top: 55px;
+    font-size: 0.875em;
+    background-color: transparent;
+    color: #999;
+  }
+
+  #label1{
+    left: 50px;
+  }
+
+  #label2{
+    right: 50px;
+  }
 }
 
 .shadow {

@@ -100,6 +100,11 @@ $('.rect').click(function(){
 
   id = $(this).attr('id').substring(5);
 
+  $('#dot'+id).css('z-index', '10');
+  $('#dot'+id).css('background-color', '#e74c3c');
+  $('#dot'+id).css('opacity', '0.8');
+  $('#date'+id).fadeIn(300);
+
   show = $('<div/>', {
     'class': 'show'
   }).appendTo('body');
@@ -144,6 +149,9 @@ $('.rect').click(function(){
       $(this).remove();
     });
     $('.caption').css('opacity', 0.7);
+    $('#dot'+id).css('background-color', '#2ecc71');
+    $('#date'+id).fadeOut(300);
+    $('#dot'+id).css('opacity', '0.6');
   });
 
   music.click(function(){
@@ -156,12 +164,7 @@ $('.rect').click(function(){
     $('.mine').animate({opacity: 1}, 1000);
   });
 
-  if(int_id < 20){
-    detail = details[int_id - 1];
-  }
-  else{
-    detail = details[1];
-  }
+  detail = details[int_id - 1];
 
   album_info = $('<div/>', {
     'class': 'album-info'

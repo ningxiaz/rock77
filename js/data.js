@@ -162,7 +162,7 @@ details = [
   {
     album_title: "Attack of the Grey Lantern",
     artist: "Mansun",
-    album_title: "Feb. 1997",
+    album_time: "Feb. 1997",
     time: "Apr. 2012",
     year: 2012,
     month: 4,

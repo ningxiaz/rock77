@@ -71,13 +71,20 @@ body{
   position: absolute;
   left: calc(50% - 500px);
   top: $main-top;
+
+  .date {
+    position: absolute;
+    display: none;
+    top: 300px;
+    color: #e67e22;
+  }
 }
 
 .container.stack {
-  -webkit-perspective: 900px;
+  -webkit-perspective: 1000;
 
   .rect {
-    -webkit-transform: rotateY( 45deg );
+    -webkit-transform: rotateY( 30deg );
   }
 }
 

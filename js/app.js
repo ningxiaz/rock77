@@ -2,6 +2,7 @@
 coordinates = [[529.5, 0.5], [583.5, 26.5], [649.5, 24.5], [703.5, 92.5], [757.5, 134.5], [703.5, 161.5], [649.5, 188.5], [703.5, 215.5], [757.5, 215.5], [732.5, 269.5], [798.5, 269.5], [811.5, 323.5], [865.5, 348.5], [919.5, 375.5], [865.5, 282.5], [678.5, 338.5], [678.5, 392.5], [732.5, 377.5], [678.5, 284.5], [624.5, 309.5], [811.5, 215.5], [825.5, 161.5], [879.5, 201.5], [919.5, 267.5], [825.5, 92.5], [879.5, 107.5], [649.5, 105.5], [703.5, 24.5], [757.5, 0.5], [811.5, 26.5], [865.5, 26.5], [919.5, 26.5], [516.5, 119.5], [570.5, 146.5], [568.5, 254.5], [543.5, 308.5], [529.5, 362.5], [54.5, 0.5], [54.5, 54.5], [54.5, 108.5], [0.5, 81.5], [0.5, 216.5], [108.5, 189.5], [175.5, 12.5], [175.5, 81.5], [256.5, 80.5], [189.5, 149.5], [177.5, 203.5], [270.5, 216.5], [216.5, 270.5], [324.5, 270.5], [378.5, 270.5], [162.5, 270.5], [243.5, 162.5], [270.5, 270.5], [270.5, 324.5], [270.5, 378.5], [324.5, 378.5], [378.5, 392.5], [378.5, 338.5], [216.5, 378.5], [162.5, 338.5], [162.5, 392.5], [297.5, 162.5], [378.5, 66.5], [351.5, 162.5], [229.5, 12.5], [283.5, 0.5], [337.5, 0.5], [391.5, 0.5], [108.5, 81.5], [54.5, 162.5], [54.5, 216.5], [54.5, 270.5], [54.5, 324.5], [54.5, 378.5], [0.5, 378.5]];
 pixels_per_year = 180;
 pixels_per_month = 15;
+albums_by_time = [53, 72, 67, 70, 4, 73, 60, 37, 24, 22, 2, 27, 26, 14, 31, 11, 57, 47, 23, 13, 3, 17, 34, 8, 30, 54, 52, 76, 10, 6, 5, 48, 68, 35, 1, 44, 36, 50, 0, 18, 65, 41, 20, 66, 64, 55, 16, 38, 71, 15, 63, 12, 39, 46, 25, 69, 74, 61, 62, 75, 51, 59, 32, 56, 40, 43, 42, 33, 29, 21, 45, 28, 49, 9, 7, 19, 58];
 
 // position tiles and images on the page
 for(i = 0; i < coordinates.length; i ++){
@@ -83,14 +84,30 @@ for(i = 0; i < coordinates.length; i ++){
       $('#album'+id+' .front').addClass('zoom');
       $('#album'+id+' .back').addClass('zoom');
       $('#date'+id).fadeIn(300);
+
+      if($('.container').hasClass('stack')){
+        id_num = parseInt(id);
+        left = $('#album'+id).css('left');
+        $('.container .date').css('left', left);
+        $('.container .date').text('Released in '+details[id_num - 1].album_time);
+        $('.container .date').fadeIn(300);
+      }
     });
 
     dot.mouseout(function(){
       id = $(this).data('id');
-      $('#album'+id).css('z-index', 0);
+      
+      if($('.container').hasClass('stack')){
+        $('#album'+id).css('z-index', albums_by_time.indexOf(parseInt(id) - 1) + 2);
+      }else{
+        $('#album'+id).css('z-index', 0);
+      }
       $('#album'+id+' .front').removeClass('zoom');
       $('#album'+id+' .back').removeClass('zoom');
       $('#date'+id).fadeOut(300);
+      if($('.container').hasClass('stack')){
+        $('.container .date').fadeOut(300);
+      }
     });
   }
 }
@@ -217,10 +234,11 @@ $('#stack').click(function(){
 
 function to_stack(){
   for(i = 0; i < coordinates.length; i ++){
+    index = albums_by_time.indexOf(i);
     $('#album'+(i+1)).animate({
       'top': '200px',
-      'left':  - 20 + (i*13) + 'px',
-      'z-index': (i + 2),
+      'left':  - 20 + (index*13) + 'px',
+      'z-index': (index + 2),
     }, 1000);
   }
 }
@@ -233,6 +251,36 @@ function to_character(){
       'z-index': 3,
     }, 1000);
   }
+}
+
+function sort(){
+  ids_by_time = [];
+  for(i = 0; i < details.length; i ++){
+    console.log(i);
+    time_s = details[i].album_time.replace( /^\D+/g, '');
+    year = parseInt(time_s);
+    ids_by_time.push({
+      'id': i,
+      'year': year,
+    });
+  }
+
+  function compare(a, b){
+    if (a.year < b.year)
+      return -1;
+    if (a.year > b.year)
+      return 1;
+    return 0;
+  }
+
+  ids_by_time.sort(compare);
+
+  ids = [];
+  for(i = 0; i < ids_by_time.length; i ++){
+    ids.push(ids_by_time[i].id);
+  }
+
+  console.log(ids);
 }
 
 $(document).foundation();

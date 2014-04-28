@@ -220,7 +220,7 @@ $('.rect').click(function(){
       $(this).remove();
     });
     $('.caption').css('opacity', 0.7);
-    $('#dot'+id).css('background-color', '#2ecc71');
+    $('.dot').css('background-color', '#2ecc71');
     $('#date'+id).fadeOut(300);
     $('#dot'+id).css('opacity', '0.6');
   });

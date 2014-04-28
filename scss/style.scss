@@ -64,6 +64,42 @@ body{
   left: calc(50% - 460px);
 }
 
+#info {
+  left: calc(50% + 400px);
+}
+
+.infobox {
+  background-color: #eee;
+  color: #555;
+  width: 600px;
+  position: absolute;
+  top: $main-top;
+  left: calc(50% - 300px);
+  padding: 50px;
+  display: none;
+  z-index: 1000;
+
+  #info-close{
+    height: 50px;
+    width: 50px;
+    background-color: #ccc;
+    color: #777;
+    font-size: 22px;
+    position: absolute;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+  }
+}
+
+.twitter-share-button {
+  position: absolute;
+  top: calc(6% + 4px);
+  left: calc(50% + 450px);
+}
+
 .container {
   width: 800px;
   // height: 800px;
@@ -247,7 +283,7 @@ body{
   }
 
   to {
-    opacity: 0.3;
+    opacity: 0.9;
   }
 }
 
@@ -292,8 +328,8 @@ body{
 
   .control {
     height: 50px;
-    background-color: #999;
-    color: white;
+    background-color: #777;
+    color: #eee;
     font-size: 22px;
     opacity: 0;
     position: absolute;

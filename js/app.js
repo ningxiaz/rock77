@@ -1,8 +1,30 @@
 // Coordinates of all the tiles
 coordinates = [[529.5, 0.5], [583.5, 26.5], [649.5, 24.5], [703.5, 92.5], [757.5, 134.5], [703.5, 161.5], [649.5, 188.5], [703.5, 215.5], [757.5, 215.5], [732.5, 269.5], [798.5, 269.5], [811.5, 323.5], [865.5, 348.5], [919.5, 375.5], [865.5, 282.5], [678.5, 338.5], [678.5, 392.5], [732.5, 377.5], [678.5, 284.5], [624.5, 309.5], [811.5, 215.5], [825.5, 161.5], [879.5, 201.5], [919.5, 267.5], [825.5, 92.5], [879.5, 107.5], [649.5, 105.5], [703.5, 24.5], [757.5, 0.5], [811.5, 26.5], [865.5, 26.5], [919.5, 26.5], [516.5, 119.5], [570.5, 146.5], [568.5, 254.5], [543.5, 308.5], [529.5, 362.5], [54.5, 0.5], [54.5, 54.5], [54.5, 108.5], [0.5, 81.5], [0.5, 216.5], [108.5, 189.5], [175.5, 12.5], [175.5, 81.5], [256.5, 80.5], [189.5, 149.5], [177.5, 203.5], [270.5, 216.5], [216.5, 270.5], [324.5, 270.5], [378.5, 270.5], [162.5, 270.5], [243.5, 162.5], [270.5, 270.5], [270.5, 324.5], [270.5, 378.5], [324.5, 378.5], [378.5, 392.5], [378.5, 338.5], [216.5, 378.5], [162.5, 338.5], [162.5, 392.5], [297.5, 162.5], [378.5, 66.5], [351.5, 162.5], [229.5, 12.5], [283.5, 0.5], [337.5, 0.5], [391.5, 0.5], [108.5, 81.5], [54.5, 162.5], [54.5, 216.5], [54.5, 270.5], [54.5, 324.5], [54.5, 378.5], [0.5, 378.5]];
+
 pixels_per_year = 180;
 pixels_per_month = 15;
 albums_by_time = [53, 72, 67, 70, 4, 73, 60, 37, 24, 22, 2, 27, 26, 14, 31, 11, 57, 47, 23, 13, 3, 17, 34, 8, 30, 54, 52, 76, 10, 6, 5, 48, 68, 35, 1, 44, 36, 50, 0, 18, 65, 41, 20, 66, 64, 55, 16, 38, 71, 15, 63, 12, 39, 46, 25, 69, 74, 61, 62, 75, 51, 59, 32, 56, 40, 43, 42, 33, 29, 21, 45, 28, 49, 9, 7, 19, 58];
+multiple_album_hash = {
+  14: [1, 14],
+  16: [0, 16],
+  25: [12, 19, 25],
+  26: [18, 26],
+  39: [8, 21, 39],
+  43: [42, 43],
+  46: [31, 46],
+  52: [9, 27, 52],
+  53: [6, 41, 53],
+  56: [51, 56],
+  60: [22, 29, 33, 37, 54, 60],
+  62: [4, 62],
+  63: [32, 63],
+  65: [28, 65],
+  66: [44, 66],
+  67: [50, 67],
+  69: [49, 69],
+  71: [48, 71],
+  72: [10, 47, 61, 72],
+};
 
 // position tiles and images on the page
 for(i = 0; i < coordinates.length; i ++){
@@ -79,37 +101,69 @@ for(i = 0; i < coordinates.length; i ++){
     }).text(details[i].time).appendTo('.timeline');
 
     dot.mouseenter(function(){
-      id = $(this).data('id');
-      $('#album'+id).css('z-index', 200);
-      $('#album'+id+' .front').addClass('zoom');
-      $('#album'+id+' .back').addClass('zoom');
+      id = parseInt($(this).data('id'));
+
       $('#date'+id).fadeIn(300);
 
-      if($('.container').hasClass('stack')){
-        id_num = parseInt(id);
-        left = $('#album'+id).css('left');
-        $('.container .date').css('left', left);
-        $('.container .date').text('Released in '+details[id_num - 1].album_time);
-        $('.container .date').fadeIn(300);
+      if((id - 1) in multiple_album_hash){
+        ids = multiple_album_hash[id - 1];
+        for(i = 0; i < ids.length; i++){
+          dot_enter(ids[i] + 1);
+        }
       }
+      else{
+        dot_enter(id);
+      }
+      $('.container .date').fadeIn(300);
     });
 
     dot.mouseout(function(){
-      id = $(this).data('id');
-      
-      if($('.container').hasClass('stack')){
-        $('#album'+id).css('z-index', albums_by_time.indexOf(parseInt(id) - 1) + 2);
-      }else{
-        $('#album'+id).css('z-index', 0);
-      }
-      $('#album'+id+' .front').removeClass('zoom');
-      $('#album'+id+' .back').removeClass('zoom');
+      id = parseInt($(this).data('id'));
+
       $('#date'+id).fadeOut(300);
       if($('.container').hasClass('stack')){
-        $('.container .date').fadeOut(300);
+        $('.container .date').fadeOut(300, function(){
+          $(this).remove();
+        });
       }
+
+      if((id - 1) in multiple_album_hash){
+        ids = multiple_album_hash[id - 1];
+        for(i = 0; i < ids.length; i++){
+          dot_out(ids[i] + 1);
+        }
+      }
+      else{
+        dot_out(id);
+      }
+      
     });
   }
+}
+
+function dot_enter(id){
+  $('#album'+id).css('z-index', 200);
+  $('#album'+id+' .front').addClass('zoom');
+  $('#album'+id+' .back').addClass('zoom');
+
+  if($('.container').hasClass('stack')){
+    left = $('#album'+id).css('left');
+    $('<div/>', {
+      'class': 'date',
+    }).css({
+      'left': left,
+    }).text('Released in '+details[id - 1].album_time).appendTo('.container');
+  }
+}
+
+function dot_out(id){
+  if($('.container').hasClass('stack')){
+    $('#album'+id).css('z-index', albums_by_time.indexOf(id - 1) + 2);
+  }else{
+    $('#album'+id).css('z-index', 0);
+  }
+  $('#album'+id+' .front').removeClass('zoom');
+  $('#album'+id+' .back').removeClass('zoom');
 }
 
 $('.rect').click(function(){
@@ -253,6 +307,15 @@ function to_character(){
   }
 }
 
+$('#info').click(function(){
+  $('.infobox').fadeIn(300);
+});
+
+$('#info-close').click(function(){
+  $('.infobox').fadeOut(300);
+});
+
+// sort the albums according to release dates
 function sort(){
   ids_by_time = [];
   for(i = 0; i < details.length; i ++){
@@ -281,6 +344,34 @@ function sort(){
   }
 
   console.log(ids);
+}
+
+// hash the listening time
+function hash(){
+  times = {};
+  for(i = 0; i < details.length; i ++){
+    time = details[i].year + '.' + details[i].month;
+    if(!(time in times)){
+      times[time] = [i];
+    }
+    else{
+      times[time].push(i);
+    }
+  }
+
+  last_as_key = {};
+
+  for(time in times){
+    ids = times[time];
+    if(ids.length > 1){
+      last_as_key[ids[ids.length - 1]] = ids;
+    }
+  }
+  console.log(last_as_key);
+
+  for(key in last_as_key){
+    console.log(key + ": " + "[" + last_as_key[key].join(', ') + "],");
+  }
 }
 
 $(document).foundation();

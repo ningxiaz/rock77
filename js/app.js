@@ -38,7 +38,11 @@ for(i = 0; i < coordinates.length; i ++){
   }).css(style).appendTo('.container');
 
   // let albums fade in with [3, 5)s delays.
-  style['-webkit-animation-delay'] = (3 + 5*Math.random()) + 's';
+  random_time = 3 + 5*Math.random();
+  style['-webkit-animation-delay'] = random_time + 's';
+  style['-moz-animation-delay'] = random_time + 's';
+  style['-o-animation-delay'] = random_time + 's';
+  style['animation-delay'] = random_time + 's';
 
   rect = $('<div/>', {
     'class': 'rect',
@@ -152,7 +156,7 @@ function dot_enter(id){
       'class': 'date',
     }).css({
       'left': left,
-    }).text('Released in '+details[id - 1].album_time).appendTo('.container');
+    }).text(details[id - 1].album_time).appendTo('.container');
   }
 }
 
@@ -171,9 +175,8 @@ $('.rect').click(function(){
 
   id = $(this).attr('id').substring(5);
 
-  $('#dot'+id).css('z-index', '10');
   $('#dot'+id).css('background-color', '#e74c3c');
-  $('#dot'+id).css('opacity', '0.8');
+  $('#dot'+id).css('opacity', '1');
   $('#date'+id).fadeIn(300);
 
   show = $('<div/>', {
@@ -287,17 +290,19 @@ $('#stack').click(function(){
 });
 
 function to_stack(){
+  $('.container .label').fadeIn(200);
   for(i = 0; i < coordinates.length; i ++){
     index = albums_by_time.indexOf(i);
     $('#album'+(i+1)).animate({
       'top': '200px',
       'left':  - 20 + (index*13) + 'px',
       'z-index': (index + 2),
-    }, 1000);
+    }, 1200);
   }
 }
 
 function to_character(){
+  $('.container .label').fadeOut(200);
   for(i = 0; i < coordinates.length; i ++){
     $('#album'+(i+1)).animate({
       'top': coordinates[i][1] + 'px',

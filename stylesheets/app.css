@@ -7791,7 +7791,8 @@ th.hide-for-touch {
   display: table-cell !important;
 }
 
-/* line 10, ../scss/style.scss */
+/* Mixins */
+/* line 54, ../scss/style.scss */
 body {
   background-color: #111111;
   /* Safari 4, Chrome 1-9, iOS 3.2-4.3, Android 2.1-3.0 */
@@ -7803,7 +7804,7 @@ body {
   background-image: linear-gradient(#111111, #333333);
 }
 
-/* line 29, ../scss/style.scss */
+/* line 73, ../scss/style.scss */
 .caption {
   text-align: center;
   position: absolute;
@@ -7811,18 +7812,18 @@ body {
   left: 46%;
   opacity: 0.7;
 }
-/* line 36, ../scss/style.scss */
+/* line 80, ../scss/style.scss */
 .caption h3, .caption h5 {
   color: white;
   line-height: 1.3;
 }
-/* line 41, ../scss/style.scss */
+/* line 85, ../scss/style.scss */
 .caption h5 {
   font-size: 1rem;
   font-style: italic;
 }
 
-/* line 47, ../scss/style.scss */
+/* line 91, ../scss/style.scss */
 .layout {
   position: absolute;
   top: 6%;
@@ -7830,27 +7831,27 @@ body {
   height: 30px;
   cursor: pointer;
 }
-/* line 54, ../scss/style.scss */
+/* line 98, ../scss/style.scss */
 .layout img {
   width: 30px;
 }
 
-/* line 59, ../scss/style.scss */
+/* line 103, ../scss/style.scss */
 #character {
   left: calc(50% - 500px);
 }
 
-/* line 63, ../scss/style.scss */
+/* line 107, ../scss/style.scss */
 #stack {
   left: calc(50% - 460px);
 }
 
-/* line 67, ../scss/style.scss */
+/* line 111, ../scss/style.scss */
 #info {
   left: calc(50% + 400px);
 }
 
-/* line 71, ../scss/style.scss */
+/* line 115, ../scss/style.scss */
 .infobox {
   background-color: #eee;
   color: #555;
@@ -7862,7 +7863,7 @@ body {
   display: none;
   z-index: 1000;
 }
-/* line 82, ../scss/style.scss */
+/* line 126, ../scss/style.scss */
 .infobox #info-close {
   height: 50px;
   width: 50px;
@@ -7877,14 +7878,14 @@ body {
   right: 0;
 }
 
-/* line 97, ../scss/style.scss */
+/* line 141, ../scss/style.scss */
 .twitter-share-button {
   position: absolute;
   top: calc(6% + 4px);
   left: calc(50% + 450px);
 }
 
-/* line 103, ../scss/style.scss */
+/* line 147, ../scss/style.scss */
 .container {
   width: 800px;
   min-width: 600px;
@@ -7892,24 +7893,50 @@ body {
   left: calc(50% - 500px);
   top: 18%;
 }
-/* line 111, ../scss/style.scss */
+/* line 154, ../scss/style.scss */
 .container .date {
   position: absolute;
   display: none;
   top: 300px;
   color: #e67e22;
 }
+/* line 161, ../scss/style.scss */
+.container .label {
+  position: absolute;
+  top: 130px;
+  width: 80px;
+  font-size: 0.875em;
+  background-color: transparent;
+  color: #999;
+  display: none;
+}
+/* line 171, ../scss/style.scss */
+.container #labela {
+  left: 0;
+}
+/* line 175, ../scss/style.scss */
+.container #labelb {
+  left: 840px;
+}
 
-/* line 119, ../scss/style.scss */
+/* line 180, ../scss/style.scss */
 .container.stack {
   -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
 }
-/* line 122, ../scss/style.scss */
+/* line 183, ../scss/style.scss */
 .container.stack .rect {
   -webkit-transform: rotateY(30deg);
+  -moz-transform: rotateY(30deg);
+  -ms-transform: rotateY(30deg);
+  -o-transform: rotateY(30deg);
+  transform: rotateY(30deg);
 }
 
-/* line 127, ../scss/style.scss */
+/* line 188, ../scss/style.scss */
 .timeline {
   width: 1080px;
   min-height: 20px;
@@ -7918,14 +7945,14 @@ body {
   left: calc(50% - 540px);
   top: 87%;
 }
-/* line 135, ../scss/style.scss */
+/* line 196, ../scss/style.scss */
 .timeline .line {
   width: 100%;
   height: 1px;
   border-bottom: 1px white solid;
   margin-top: 9px;
 }
-/* line 142, ../scss/style.scss */
+/* line 203, ../scss/style.scss */
 .timeline .dot {
   position: absolute;
   top: 0;
@@ -7935,7 +7962,7 @@ body {
   background-color: #2ecc71;
   opacity: 0.6;
 }
-/* line 152, ../scss/style.scss */
+/* line 213, ../scss/style.scss */
 .timeline .date {
   position: absolute;
   color: #ccc;
@@ -7944,24 +7971,24 @@ body {
   display: none;
   text-align: center;
 }
-/* line 161, ../scss/style.scss */
+/* line 222, ../scss/style.scss */
 .timeline .label {
   position: absolute;
-  top: 55px;
+  top: 50px;
   font-size: 0.875em;
   background-color: transparent;
   color: #999;
 }
-/* line 169, ../scss/style.scss */
+/* line 230, ../scss/style.scss */
 .timeline #label1 {
   left: 50px;
 }
-/* line 173, ../scss/style.scss */
+/* line 234, ../scss/style.scss */
 .timeline #label2 {
   right: 50px;
 }
 
-/* line 178, ../scss/style.scss */
+/* line 239, ../scss/style.scss */
 .shadow {
   width: 54px;
   height: 54px;
@@ -7971,68 +7998,149 @@ body {
 }
 
 @-webkit-keyframes full-fadein {
-  /* line 187, ../scss/style.scss */
+  /* line 248, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
-  /* line 191, ../scss/style.scss */
+  /* line 252, ../scss/style.scss */
   to {
     opacity: 1;
   }
 }
 
-/* line 196, ../scss/style.scss */
+@-moz-keyframes full-fadein {
+  /* line 248, ../scss/style.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 252, ../scss/style.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes full-fadein {
+  /* line 248, ../scss/style.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 252, ../scss/style.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes full-fadein {
+  /* line 248, ../scss/style.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 252, ../scss/style.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+/* line 257, ../scss/style.scss */
 .rect {
   width: 54px;
   height: 54px;
   position: absolute;
   -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  -o-perspective: 1000;
+  perspective: 1000;
   cursor: pointer;
   opacity: 0;
-  -webkit-animation-duration: .3s;
+  -webkit-animation-delay: 0s;
+  -webkit-animation-duration: 0.3s;
   -webkit-animation-name: full-fadein;
   -webkit-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -moz-animation-delay: 0s;
+  -moz-animation-duration: 0.3s;
+  -moz-animation-name: full-fadein;
+  -moz-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -o-animation-delay: 0s;
+  -o-animation-duration: 0.3s;
+  -o-animation-name: full-fadein;
+  -o-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  animation-delay: 0s;
+  animation-duration: 0.3s;
+  animation-name: full-fadein;
+  animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
 }
-/* line 212, ../scss/style.scss */
+/* line 267, ../scss/style.scss */
 .rect .flipper {
   -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  -o-transition: 0.6s;
+  transition: 0.6s;
   -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
   position: relative;
 }
-/* line 217, ../scss/style.scss */
+/* line 272, ../scss/style.scss */
 .rect .flipper .front, .rect .flipper .back {
   width: 54px;
   height: 54px;
   -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
   -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
-/* line 228, ../scss/style.scss */
+/* line 283, ../scss/style.scss */
 .rect .flipper .front {
   z-index: 2;
 }
-/* line 232, ../scss/style.scss */
+/* line 287, ../scss/style.scss */
 .rect .flipper .back {
-  transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
-/* line 237, ../scss/style.scss */
+/* line 291, ../scss/style.scss */
 .rect .flipper .front.zoom, .rect .flipper .back.zoom {
-  -webkit-transform: scale(1.8);
+  -webkit-transform: scale(1.8, 1.8);
+  -moz-transform: scale(1.8, 1.8);
+  -ms-transform: scale(1.8, 1.8);
+  -o-transform: scale(1.8, 1.8);
+  transform: scale(1.8, 1.8);
   box-shadow: 0px 0px 20px #fff;
 }
 
-/* line 245, ../scss/style.scss */
+/* line 299, ../scss/style.scss */
 .rect:hover .flipper, .rect.hover .flipper {
-  transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 @-webkit-keyframes zoom-fadein {
-  /* line 251, ../scss/style.scss */
+  /* line 304, ../scss/style.scss */
   from {
     width: 0;
     height: 0;
@@ -8041,7 +8149,67 @@ body {
     opacity: 0;
   }
 
-  /* line 259, ../scss/style.scss */
+  /* line 312, ../scss/style.scss */
+  to {
+    width: 500px;
+    height: 500px;
+    opacity: 1;
+    top: 18%;
+    left: calc(50% - 500px);
+  }
+}
+
+@-moz-keyframes zoom-fadein {
+  /* line 304, ../scss/style.scss */
+  from {
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+  }
+
+  /* line 312, ../scss/style.scss */
+  to {
+    width: 500px;
+    height: 500px;
+    opacity: 1;
+    top: 18%;
+    left: calc(50% - 500px);
+  }
+}
+
+@-o-keyframes zoom-fadein {
+  /* line 304, ../scss/style.scss */
+  from {
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+  }
+
+  /* line 312, ../scss/style.scss */
+  to {
+    width: 500px;
+    height: 500px;
+    opacity: 1;
+    top: 18%;
+    left: calc(50% - 500px);
+  }
+}
+
+@keyframes zoom-fadein {
+  /* line 304, ../scss/style.scss */
+  from {
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+  }
+
+  /* line 312, ../scss/style.scss */
   to {
     width: 500px;
     height: 500px;
@@ -8052,13 +8220,55 @@ body {
 }
 
 @-webkit-keyframes slide {
-  /* line 269, ../scss/style.scss */
+  /* line 322, ../scss/style.scss */
   from {
     left: calc(50% - 500px);
     opacity: 0.5;
   }
 
-  /* line 274, ../scss/style.scss */
+  /* line 327, ../scss/style.scss */
+  to {
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes slide {
+  /* line 322, ../scss/style.scss */
+  from {
+    left: calc(50% - 500px);
+    opacity: 0.5;
+  }
+
+  /* line 327, ../scss/style.scss */
+  to {
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+@-o-keyframes slide {
+  /* line 322, ../scss/style.scss */
+  from {
+    left: calc(50% - 500px);
+    opacity: 0.5;
+  }
+
+  /* line 327, ../scss/style.scss */
+  to {
+    left: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes slide {
+  /* line 322, ../scss/style.scss */
+  from {
+    left: calc(50% - 500px);
+    opacity: 0.5;
+  }
+
+  /* line 327, ../scss/style.scss */
   to {
     left: 50%;
     opacity: 1;
@@ -8066,28 +8276,81 @@ body {
 }
 
 @-webkit-keyframes fadein {
-  /* line 281, ../scss/style.scss */
+  /* line 334, ../scss/style.scss */
   from {
     opacity: 0;
   }
 
-  /* line 285, ../scss/style.scss */
+  /* line 338, ../scss/style.scss */
   to {
     opacity: 0.9;
   }
 }
 
-/* line 291, ../scss/style.scss */
+@-moz-keyframes fadein {
+  /* line 334, ../scss/style.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 338, ../scss/style.scss */
+  to {
+    opacity: 0.9;
+  }
+}
+
+@-o-keyframes fadein {
+  /* line 334, ../scss/style.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 338, ../scss/style.scss */
+  to {
+    opacity: 0.9;
+  }
+}
+
+@keyframes fadein {
+  /* line 334, ../scss/style.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 338, ../scss/style.scss */
+  to {
+    opacity: 0.9;
+  }
+}
+
+/* line 344, ../scss/style.scss */
 .show .show-album {
   width: 500px;
   height: 500px;
   position: absolute;
   z-index: 300;
-  -webkit-animation-duration: .5s;
+  -webkit-animation-delay: 0s;
+  -webkit-animation-duration: 0.5s;
   -webkit-animation-name: zoom-fadein;
   -webkit-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -moz-animation-delay: 0s;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-name: zoom-fadein;
+  -moz-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -o-animation-delay: 0s;
+  -o-animation-duration: 0.5s;
+  -o-animation-name: zoom-fadein;
+  -o-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  animation-delay: 0s;
+  animation-duration: 0.5s;
+  animation-name: zoom-fadein;
+  animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
 }
-/* line 302, ../scss/style.scss */
+/* line 353, ../scss/style.scss */
 .show .show-me {
   width: 500px;
   height: 500px;
@@ -8097,7 +8360,7 @@ body {
   left: calc(50% - 500px);
   opacity: 0;
 }
-/* line 314, ../scss/style.scss */
+/* line 363, ../scss/style.scss */
 .show .show-text {
   width: 500px;
   height: 500px;
@@ -8106,12 +8369,28 @@ body {
   background-color: white;
   position: absolute;
   z-index: 260;
+  -webkit-animation-delay: 0.8s;
   -webkit-animation-duration: 1s;
   -webkit-animation-name: slide;
   -webkit-animation-fill-mode: forwards;
-  -webkit-animation-delay: .8s;
+  /* this prevents the animation from restarting! */
+  -moz-animation-delay: 0.8s;
+  -moz-animation-duration: 1s;
+  -moz-animation-name: slide;
+  -moz-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -o-animation-delay: 0.8s;
+  -o-animation-duration: 1s;
+  -o-animation-name: slide;
+  -o-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  animation-delay: 0.8s;
+  animation-duration: 1s;
+  animation-name: slide;
+  animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
 }
-/* line 329, ../scss/style.scss */
+/* line 375, ../scss/style.scss */
 .show .control {
   height: 50px;
   background-color: #777;
@@ -8124,48 +8403,68 @@ body {
   line-height: 50px;
   cursor: pointer;
   z-index: 260;
-  -webkit-animation-duration: .5s;
+  -webkit-animation-delay: 1.5s;
+  -webkit-animation-duration: 0.5s;
   -webkit-animation-name: fadein;
   -webkit-animation-fill-mode: forwards;
-  -webkit-animation-delay: 1.5s;
+  /* this prevents the animation from restarting! */
+  -moz-animation-delay: 1.5s;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-name: fadein;
+  -moz-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  -o-animation-delay: 1.5s;
+  -o-animation-duration: 0.5s;
+  -o-animation-name: fadein;
+  -o-animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
+  animation-delay: 1.5s;
+  animation-duration: 0.5s;
+  animation-name: fadein;
+  animation-fill-mode: forwards;
+  /* this prevents the animation from restarting! */
 }
-/* line 348, ../scss/style.scss */
+/* line 391, ../scss/style.scss */
 .show .close {
   width: 50px;
   left: calc(50% + 500px - 50px);
 }
-/* line 353, ../scss/style.scss */
+/* line 396, ../scss/style.scss */
 .show .music, .show .me {
   font-size: 18px;
 }
-/* line 357, ../scss/style.scss */
+/* line 400, ../scss/style.scss */
 .show .music {
   width: 80px;
   left: calc(50% - 80px);
 }
-/* line 362, ../scss/style.scss */
+/* line 405, ../scss/style.scss */
 .show .me {
   width: 60px;
   left: 50%;
 }
-/* line 367, ../scss/style.scss */
+/* line 410, ../scss/style.scss */
 .show .album-info {
   text-align: center;
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
-/* line 374, ../scss/style.scss */
+/* line 416, ../scss/style.scss */
 .show .album-info h4.album-title {
   text-transform: uppercase;
   font-size: 2em;
   font-weight: 600;
 }
-/* line 380, ../scss/style.scss */
+/* line 422, ../scss/style.scss */
 .show .album-info h6.artist {
   color: #e74c3c;
 }
-/* line 385, ../scss/style.scss */
+/* line 427, ../scss/style.scss */
 .show .mine {
   position: absolute;
   top: 0;
@@ -8178,35 +8477,16 @@ body {
   width: 100%;
   height: 100%;
 }
-/* line 397, ../scss/style.scss */
+/* line 439, ../scss/style.scss */
 .show .mine .location {
   color: #2ecc71;
   font-weight: 600;
 }
-/* line 402, ../scss/style.scss */
+/* line 444, ../scss/style.scss */
 .show .mine p {
   line-height: 1.4;
   margin: 20px 0;
   font-weight: 400;
   color: #555;
   font-size: 1.125em;
-}
-/* line 411, ../scss/style.scss */
-.show .descr {
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  padding: 16px 24px;
-}
-/* line 419, ../scss/style.scss */
-.show .descr span {
-  color: white;
-  padding-right: 20px;
-  font-weight: 600;
-}
-/* line 425, ../scss/style.scss */
-.show .descr .time {
-  color: #27ae60;
 }
